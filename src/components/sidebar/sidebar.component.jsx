@@ -8,7 +8,7 @@ export const SideBar = ({pokemon}) => {
 
     return (
     <div className='sideBar'>
-        <input onChange={search} placeholder='search'/>
+        <input onChange={search} placeholder='Search for pokemon'/>
         {/* <div className='rectangle'/> */}
         {pokemon
             .filter(pokemon => pokemon.name.toUpperCase().includes(filterText.toUpperCase()))

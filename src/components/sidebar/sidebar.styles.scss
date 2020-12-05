@@ -5,12 +5,15 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: $purple;
     text-align: left;
-    border: solid;
-    height: 99.5vh;
+    height: 100vh;
     overflow-y: scroll;
+    overflow-x: hidden;
 
     input{
         text-align: center;
+        background-color: transparent;
+        border: none;
+        border-bottom: solid $darkPurple;
         font-size: 20px;
         margin-top: 20px;
         height: 40px;
