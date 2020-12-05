@@ -24,6 +24,7 @@ class App extends React.Component {
                         id,
                         name: data.name,
                         img: `https://pokeres.bastionbot.org/images/pokemon/${id}.png`,
+                        sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
                     };
                 });
                 this.setState({ cardList });
