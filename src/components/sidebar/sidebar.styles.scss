@@ -1,9 +1,10 @@
 @import '../../colors.scss';
 
+
 .sideBar {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: $purple;
-    text-align: center;
+    text-align: left;
     border: solid;
     height: 99.5vh;
     overflow-y: scroll;

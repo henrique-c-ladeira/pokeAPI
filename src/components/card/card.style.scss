@@ -9,8 +9,8 @@
     border-radius: 10%;
     margin: 1vh;
     perspective: 1000px;
-    height: 20vh;
-    width: 20vh;
+    height: 10rem;
+    width: 10rem;
     transition: all 1s ease;
 
     &:hover {
@@ -33,11 +33,10 @@
     }
     div{
         transition: all 1s ease;
-        font-size: 2rem;
+        font-size: 1.5rem;
         text-transform: capitalize;
         text-align: center;
         color: $darkPurple;
-        margin: 3px;
 
     }
 
