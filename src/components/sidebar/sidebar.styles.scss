@@ -1,0 +1,18 @@
+@import '../../colors.scss';
+
+.sideBar {
+    background-color: $purple;
+    text-align: center;
+    padding-top: 2rem;
+
+    div{
+        padding: 1rem;
+        text-transform: capitalize;
+
+        &:hover{
+            color: $lightPurple;
+            background-color: $darkPurple;
+            border-radius: 20%;
+        }
+    }
+}

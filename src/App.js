@@ -1,25 +1,61 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import api from './api';
+import {CardList} from './components/cardList.component/cardList.component.jsx';
+import {Header} from './components/header/header.component.jsx'
+import { SideBar } from './components/sidebar/sidebar.component.jsx';
+import './main.scss'
 
-const App = () => {
-    const [pokemon, setPokemon] = useState({});
+class App extends React.Component {
+    constructor() {
+        super();
 
-    useEffect(() => {
-        api.get('pokemon-form/63')
+        this.state = {
+            cardList: [],
+        };
+    }
+
+    componentDidMount() {
+        api.get('pokemon?limit=15&offset=65')
             .then((response) => {
-                const sprite = response.data.sprites.front_default;
-                const name = response.data.pokemon.name;
-                setPokemon({ name, sprite });
+                const dataList = response.data.results;
+                const cardList = dataList.map((data) => {
+                    const id = data.url.split('/')[6];
+                    return {
+                        id,
+                        name: data.name,
+                        img: `https://pokeres.bastionbot.org/images/pokemon/${id}.png`,
+                    };
+                });
+                this.setState({ cardList });
             });
-    }, []);
+    }
 
-    return (
-        <div className="App">
-            <img src={pokemon.sprite} alt="" width="300rem" />
-            <h1> {pokemon.name} </h1>
-        </div>
-    );
-};
+    // handlePokemon = (event) => {
+    //     api.get(`pokemon-form/${event.target.value}`)
+    //         .then((response) => {
+    //             const sprite = response.data.sprites.front_default;
+    //             const name = response.data.pokemon.name;
+    //             this.setState({
+    //                 pokemon: {
+    //                     name,
+    //                     sprite,
+    //                 },
+    //             });
+    //         });
+    // };
+
+    render() {
+        return (
+            <div className="App">
+                <Header />
+                <div className='main'>
+                <SideBar pokemon={this.state.cardList}/>
+                <CardList className="card-list" list={this.state.cardList} />
+                </div>
+            </div>
+        );
+    }
+}
+
 
 export default App;
-
