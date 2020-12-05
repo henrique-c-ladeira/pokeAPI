@@ -1,23 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled, {keyframes} from 'styled-components';
-import {flip} from 'react-animations';
+import {flipInY} from 'react-animations';
+import api from '../../api';
 
 import './card.style.scss'
 
-const Animation = styled.div`animation: 0.5s ${keyframes`${flip}`} `;
+const Animation = styled.div`animation: 0.5s ${keyframes`${flipInY}`} `;
 
 export const Card = ({pokemon}) => {
+    const [isSending, setIsSending] = useState(false);
     const [flipped, setFlipped] = useState(false);
+    const [stats, setStats] = useState([]);
 
-    const flipCard = () => {
+    const flipCard = useCallback(async () => {
+        if (isSending) return;
+        setIsSending(true);
+        const res = await api.get(`pokemon/${pokemon.id}`)
+        console.log(res.data.stats);
+        setStats(res.data.stats);
         setFlipped(!flipped)
-    };
+        setIsSending(false);
+    }, [isSending]);
 
     return (
         flipped ?
-        <Animation><div onClick={flipCard} className='card'>
+        <Animation><div onClick={flipCard} className='cardFlipped'>
             {/* <img src={pokemon.img} alt="" /> */}
-            <div> {pokemon.name} </div>
+            <div> <img src={pokemon.sprite}/> {pokemon.name} </div>
+            {stats.map(stat => <div>
+                {stat.stat.name} - {stat.base_stat}
+            </div>)}
         </div></Animation>
         :
         <div onClick={flipCard} className='card'>

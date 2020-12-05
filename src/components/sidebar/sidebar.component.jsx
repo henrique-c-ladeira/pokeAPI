@@ -13,7 +13,7 @@ export const SideBar = ({pokemon}) => {
         {pokemon
             .filter(pokemon => pokemon.name.toUpperCase().includes(filterText.toUpperCase()))
             .map(pokemon => (
-            <div key={pokemon.id} ><img src={pokemon.sprite} /> <span>{pokemon.name}</span></div>
+            <div key={pokemon.id} ><img alt='' src={pokemon.sprite} /> <span>{pokemon.name}</span></div>
         ))}
     </div>
     );
