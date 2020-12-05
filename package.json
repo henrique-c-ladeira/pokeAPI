@@ -1,10 +1,12 @@
 {
     "name": "pokereact",
+    "homepage": "https://henrique-c-ladeira.github.io/pokeAPI",
     "dependencies": {
         "@testing-library/jest-dom": "^5.11.4",
         "@testing-library/react": "^11.1.0",
         "@testing-library/user-event": "^12.1.10",
         "axios": "^0.21.0",
+        "gh-pages": "^3.1.0",
         "node-sass": "^4.0.0",
         "react": "^17.0.1",
         "react-animations": "^1.0.0",
@@ -37,6 +39,8 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "predeploy": "yarn build",
+        "deploy": "gh-pages -d build"
     }
 }

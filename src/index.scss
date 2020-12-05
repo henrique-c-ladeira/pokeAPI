@@ -4,6 +4,6 @@ body {
   margin: 0;
   padding: 0px;
   font-family: sans-serif;
-  background-color: $lightPurple;
+  background: linear-gradient($purple, $secondary);
   overflow-y: hidden;
 }
