@@ -1,9 +1,9 @@
 import React from 'react';
 import api from './api';
-import {CardList} from './components/cardList.component/cardList.component.jsx';
+import {CardList} from './components/cardList/cardList.component.jsx';
 import {Header} from './components/header/header.component.jsx'
 import { SideBar } from './components/sidebar/sidebar.component.jsx';
-import './main.scss'
+import './App.scss'
 
 class App extends React.Component {
     constructor() {
@@ -15,7 +15,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        api.get('pokemon?limit=15&offset=65')
+        api.get('pokemon?limit=151')
             .then((response) => {
                 const dataList = response.data.results;
                 const cardList = dataList.map((data) => {
@@ -47,10 +47,10 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <Header />
-                <div className='main'>
                 <SideBar pokemon={this.state.cardList}/>
-                <CardList className="card-list" list={this.state.cardList} />
+                <div>
+                    <Header />
+                    <CardList className="card-list" list={this.state.cardList} />
                 </div>
             </div>
         );

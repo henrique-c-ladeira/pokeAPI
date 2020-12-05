@@ -1,6 +1,6 @@
 import React from 'react';
 import './cardList.style.scss'
-import { Card } from '../card.component/card.component.jsx';
+import { Card } from '../card/card.component.jsx';
 
 export const CardList = props => (
     <div className='cardList'>

@@ -1,9 +1,29 @@
 @import '../../colors.scss';
 
 .sideBar {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: $purple;
     text-align: center;
-    padding-top: 2rem;
+    border: solid;
+    height: 99.5vh;
+    overflow-y: scroll;
+
+    input{
+        text-align: center;
+        font-size: 20px;
+        margin-top: 20px;
+        height: 40px;
+        width: 100%;
+    }
+
+
+    .rectangle{
+        position: absolute;
+        display: inline-block;
+        width: 80%;
+        height: 100px;
+        border: solid;
+    }
 
     div{
         padding: 1rem;
@@ -12,7 +32,6 @@
         &:hover{
             color: $lightPurple;
             background-color: $darkPurple;
-            border-radius: 20%;
         }
     }
 }
