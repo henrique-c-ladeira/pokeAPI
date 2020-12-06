@@ -48,11 +48,9 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <SideBar pokemon={this.state.cardList}/>
-                <div>
-                    <Header title='<> PokeAPI in React </>'/>
-                    <CardList list={this.state.cardList} />
-                </div>
+                {/* <SideBar pokemon={this.state.cardList}/> */}
+                <Header title='<> PokeAPI in React </>'/>
+                <CardList list={this.state.cardList} />
             </div>
         );
     }

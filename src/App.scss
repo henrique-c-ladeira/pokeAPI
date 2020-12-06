@@ -9,6 +9,12 @@ body {
 }
 
 .App {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+
+  //   display: grid;
+  //   grid-template-columns: 1fr 3fr;
+    
 }
