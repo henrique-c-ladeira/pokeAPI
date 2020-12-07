@@ -1,11 +1,27 @@
 import React from 'react';
-import './cardList.style.scss'
+import { connect } from 'react-redux';
 import { Card } from '../card/card.component.jsx';
 
-export const CardList = props => (
+
+import './cardList.style.scss'
+
+const CardList = ({searchField, list}) => (
     <div className='cardList'>
-    {props.list.map(card => (
-    <div value={card.name} key={card.name}> <Card pokemon={card} /> </div>
-    ))}
+        {list.filter(
+            elem => elem.name.toUpperCase().includes(searchField.toUpperCase()))
+            .map(card => (
+                <div value={card.name} key={card.name}>
+                    <Card pokemon={card} /> 
+                </div>
+        ))}
     </div>
-    );
+);
+
+const mapStateToProps = state => ({
+    searchField: state.searchField.searchField
+})
+
+export default connect(mapStateToProps)(CardList)
+
+
+    

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import styled, {keyframes} from 'styled-components';
 import {flipInY} from 'react-animations';
 import api from '../../api';
@@ -12,22 +12,21 @@ export const Card = ({pokemon}) => {
     const [flipped, setFlipped] = useState(false);
     const [stats, setStats] = useState([]);
 
-    const flipCard = useCallback(async () => {
+    const flipCard = async () => {
         if (isSending) return;
         setIsSending(true);
         const res = await api.get(`pokemon/${pokemon.id}`)
-        console.log(res.data.stats);
         setStats(res.data.stats);
         setFlipped(!flipped)
         setIsSending(false);
-    }, [isSending]);
+    };
 
     return (
         flipped ?
         <Animation><div onClick={flipCard} className='cardFlipped'>
             {/* <img src={pokemon.img} alt="" /> */}
-            <div> <img src={pokemon.sprite}/> {pokemon.name} </div>
-            {stats.map(stat => <div>
+            <div> <img alt='' src={pokemon.sprite}/> {pokemon.name} </div>
+            {stats.map(stat => <div key={stat.stat.name}>
                 {stat.stat.name} - {stat.base_stat}
             </div>)}
         </div></Animation>

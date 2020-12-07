@@ -1,9 +1,9 @@
 import React from 'react';
 import api from './api';
-import {CardList} from './components/cardList/cardList.component.jsx';
+import CardList from './components/cardList/cardList.component.jsx';
 import {Header} from './components/header/header.component.jsx'
-import { SideBar } from './components/sidebar/sidebar.component.jsx';
 import './App.scss'
+import SearchField from './components/search-field/search-field.component';
 
 class App extends React.Component {
     constructor() {
@@ -50,6 +50,7 @@ class App extends React.Component {
             <div className="App">
                 {/* <SideBar pokemon={this.state.cardList}/> */}
                 <Header title='<> PokeAPI in React </>'/>
+                <SearchField />
                 <CardList list={this.state.cardList} />
             </div>
         );
