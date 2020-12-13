@@ -1,6 +1,6 @@
 import React from 'react';
-import './header.styles.scss'
+import './header.styles.scss';
 
-export const Header = ({title}) => (
+export const Header = ({ title }) => (
     <div className='header'> {title} </div>
 );
