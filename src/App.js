@@ -1,61 +1,60 @@
 import React from 'react';
 import api from './api';
 import CardList from './components/cardList/cardList.component.jsx';
-import {Header} from './components/header/header.component.jsx'
-import './App.scss'
+import { Header } from './components/header/header.component.jsx';
+import './App.scss';
 import SearchField from './components/search-field/search-field.component';
 
 class App extends React.Component {
-    constructor() {
-        super();
+  constructor () {
+    super();
 
-        this.state = {
-            cardList: [],
-        };
-    }
+    this.state = {
+      cardList: []
+    };
+  }
 
-    componentDidMount() {
-        api.get('pokemon?limit=151')
-            .then((response) => {
-                const dataList = response.data.results;
-                const cardList = dataList.map((data) => {
-                    const id = data.url.split('/')[6];
-                    return {
-                        id,
-                        name: data.name,
-                        img: `https://pokeres.bastionbot.org/images/pokemon/${id}.png`,
-                        sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
-                    };
-                });
-                this.setState({ cardList });
-            });
-    }
+  componentDidMount () {
+    api.get('pokemon?limit=151')
+      .then((response) => {
+        const dataList = response.data.results;
+        const cardList = dataList.map((data) => {
+          const id = data.url.split('/')[6];
+          return {
+            id,
+            name: data.name,
+            img: `https://pokeres.bastionbot.org/images/pokemon/${id}.png`,
+            sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
+          };
+        });
+        this.setState({ cardList });
+      });
+  }
 
-    // handlePokemon = (event) => {
-    //     api.get(`pokemon-form/${event.target.value}`)
-    //         .then((response) => {
-    //             const sprite = response.data.sprites.front_default;
-    //             const name = response.data.pokemon.name;
-    //             this.setState({
-    //                 pokemon: {
-    //                     name,
-    //                     sprite,
-    //                 },
-    //             });
-    //         });
-    // };
+  // handlePokemon = (event) => {
+  //     api.get(`pokemon-form/${event.target.value}`)
+  //         .then((response) => {
+  //             const sprite = response.data.sprites.front_default;
+  //             const name = response.data.pokemon.name;
+  //             this.setState({
+  //                 pokemon: {
+  //                     name,
+  //                     sprite,
+  //                 },
+  //             });
+  //         });
+  // };
 
-    render() {
-        return (
+  render () {
+    return (
             <div className="App">
                 {/* <SideBar pokemon={this.state.cardList}/> */}
                 <Header title='<> PokeAPI in React </>'/>
                 <SearchField />
                 <CardList list={this.state.cardList} />
             </div>
-        );
-    }
+    );
+  }
 }
-
 
 export default App;
