@@ -5,8 +5,6 @@ import api from '../../utils/api';
 
 import './card.style.scss';
 
-const Animation = styled.div`animation: 0.5s ${keyframes`${flipInY}`} `;
-
 export const Card = ({ pokemon }) => {
   const [isSending, setIsSending] = useState(false);
   const [flipped, setFlipped] = useState(false);
@@ -22,21 +20,42 @@ export const Card = ({ pokemon }) => {
   };
 
   return (
-    flipped
-      ? <Animation><div onClick={flipCard} className='cardFlipped'>
-            {/* <img src={pokemon.img} alt="" /> */}
-            <div> <img alt='' src={pokemon.sprite}/> {pokemon.name} </div>
-            {stats.map(stat => <div key={stat.stat.name}>
-                {stat.stat.name} - {stat.base_stat}
-            </div>)}
-        </div></Animation>
-      : <div onClick={flipCard} className='card'>
+    <>
+      {flipped
+        ? (
+          <Animation>
+            <div onClick={flipCard} className="cardFlipped">
+              {/* <img src={pokemon.img} alt="" /> */}
+              <div>
+                <img alt="" src={pokemon.sprite} />
+                {pokemon.name}
+              </div>
+              {stats.map((stat) => (
+                <div key={stat.stat.name}>
+                  {stat.stat.name}
+                  {' '}
+                  -
+                  {stat.base_stat}
+                </div>
+              ))}
+            </div>
+          </Animation>
+        )
+        : (
+          <div onClick={flipCard} className="card">
             <img src={pokemon.img} alt="" />
-            <div> {pokemon.name}  </div>
-        </div>
-
+            <div>
+              {' '}
+              {pokemon.name}
+              {' '}
+            </div>
+          </div>
+        )}
+    </>
   );
 };
+
+const Animation = styled.div`animation: 0.5s ${keyframes`${flipInY}`} `;
 
 //     const sendRequest = useCallback(async () => {
 //       // don't send again while we are sending

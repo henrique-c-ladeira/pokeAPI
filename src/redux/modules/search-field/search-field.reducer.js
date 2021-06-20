@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  searchField: ''
+  searchField: '',
 };
 
 const searchFieldReducer = (state = INITIAL_STATE, action) => {
@@ -7,7 +7,7 @@ const searchFieldReducer = (state = INITIAL_STATE, action) => {
     case 'SET_SEARCH_FIELD':
       return {
         ...state,
-        searchField: action.payload
+        searchField: action.payload,
       };
     default:
       return state;

@@ -11,16 +11,16 @@ export const usePokemon = () => {
     api.get('pokemon?limit=151')
       .then((response) => {
         const dataList = response.data.results;
-        const cardList = dataList.map((data) => {
+        const cardListResponse = dataList.map((data) => {
           const id = data.url.split('/')[6];
           return {
             id,
             name: data.name,
             img: `https://pokeres.bastionbot.org/images/pokemon/${id}.png`,
-            sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
+            sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
           };
         });
-        setCardList(cardList);
+        setCardList(cardListResponse);
         setLoading(false);
         setError(false);
       })
