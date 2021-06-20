@@ -6,7 +6,7 @@ import SearchField from './components/search-field/search-field.component';
 import { usePokemon } from './utils/api/hooks/usePokemon';
 
 const App = () => {
-  const [cardList, loading, error] = usePokemon();
+  const [cardList, loading] = usePokemon();
 
   return (
     <div className="App">
