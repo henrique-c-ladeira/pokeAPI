@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setSearchField } from '../../redux/search-field/search-field.actions';
+import { setSearchField } from '../../redux/modules/search-field/search-field.actions';
 
 import './search-field.styles.scss';
 

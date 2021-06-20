@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { flipInY } from 'react-animations';
-import api from '../../api';
+import api from '../../utils/api';
 
 import './card.style.scss';
 
