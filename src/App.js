@@ -1,20 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import api from './api';
 import CardList from './components/cardList/cardList.component.jsx';
 import { Header } from './components/header/header.component.jsx';
 import './App.scss';
 import SearchField from './components/search-field/search-field.component';
 
-class App extends React.Component {
-  constructor () {
-    super();
+const App = () => {
+  const [cardList, setCardList] = useState([]);
 
-    this.state = {
-      cardList: []
-    };
-  }
-
-  componentDidMount () {
+  useEffect(() => {
     api.get('pokemon?limit=151')
       .then((response) => {
         const dataList = response.data.results;
@@ -27,34 +21,17 @@ class App extends React.Component {
             sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
           };
         });
-        this.setState({ cardList });
+        setCardList(cardList);
       });
-  }
+  }, []);
 
-  // handlePokemon = (event) => {
-  //     api.get(`pokemon-form/${event.target.value}`)
-  //         .then((response) => {
-  //             const sprite = response.data.sprites.front_default;
-  //             const name = response.data.pokemon.name;
-  //             this.setState({
-  //                 pokemon: {
-  //                     name,
-  //                     sprite,
-  //                 },
-  //             });
-  //         });
-  // };
-
-  render () {
-    return (
-            <div className="App">
-                {/* <SideBar pokemon={this.state.cardList}/> */}
-                <Header title='<> PokeAPI in React </>'/>
-                <SearchField />
-                <CardList list={this.state.cardList} />
-            </div>
-    );
-  }
-}
+  return (
+    <div className="App">
+      <Header title='<> PokeAPI in React </>'/>
+      <SearchField />
+      <CardList list={cardList} />
+    </div>
+  );
+};
 
 export default App;
