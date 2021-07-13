@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
-import { flipInY } from 'react-animations';
+import { RadarChart } from '../radar-chart';
 import api from '../../utils/api';
-
-import './card.style.scss';
+import { Container, ContainerFlipped } from './card.styled';
+import 'react-svg-radar-chart/build/css/index.css';
 
 export const Card = ({ pokemon }) => {
   const [isSending, setIsSending] = useState(false);
@@ -18,44 +17,45 @@ export const Card = ({ pokemon }) => {
     setFlipped(!flipped);
     setIsSending(false);
   };
-
   return (
     <>
+      {console.log(stats)}
       {flipped
         ? (
-          <Animation>
-            <div onClick={flipCard} className="cardFlipped">
-              {/* <img src={pokemon.img} alt="" /> */}
-              <div>
-                <img alt="" src={pokemon.sprite} />
-                {pokemon.name}
-              </div>
-              {stats.map((stat) => (
-                <div key={stat.stat.name}>
-                  {stat.stat.name}
-                  {' '}
-                  -
-                  {stat.base_stat}
-                </div>
-              ))}
+          <ContainerFlipped onClick={flipCard}>
+            <div>
+              <img alt="" src={pokemon.sprite} />
+              {pokemon.name}
             </div>
-          </Animation>
+            <div style={{ display: 'flex' }}>
+              <RadarChart
+                data={stats
+                  .reduce((acc, cur) => ({ ...acc, [cur.stat.name]: cur.base_stat / 150 }), {})}
+              />
+            </div>
+            {/* {stats.map((stat) => (
+              <div key={stat.stat.name}>
+                {stat.stat.name}
+                {' '}
+                -
+                {stat.base_stat}
+              </div>
+            ))} */}
+          </ContainerFlipped>
         )
         : (
-          <div onClick={flipCard} className="card">
+          <Container onClick={flipCard}>
             <img src={pokemon.img} alt="" />
             <div>
               {' '}
               {pokemon.name}
               {' '}
             </div>
-          </div>
+          </Container>
         )}
     </>
   );
 };
-
-const Animation = styled.div`animation: 0.5s ${keyframes`${flipInY}`} `;
 
 //     const sendRequest = useCallback(async () => {
 //       // don't send again while we are sending
