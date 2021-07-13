@@ -1,8 +1,8 @@
 import React from 'react';
-import './header.styles.scss';
+import { Container } from './header.styled';
 
 export const Header = ({ title }) => (
-  <div className="header">
+  <Container>
     {title}
-  </div>
+  </Container>
 );

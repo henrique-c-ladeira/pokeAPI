@@ -1,10 +1,9 @@
-.cardList {
+import styled from 'styled-components';
+
+export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   // grid-template-columns: 1fr 1fr 1fr;
-  margin-left: 1vh;
-  height: 100vh;
   width: 100%;
-  overflow-x: hidden;
-}
+`;

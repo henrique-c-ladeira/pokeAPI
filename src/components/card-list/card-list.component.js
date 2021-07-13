@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from '../card/card.component';
 
-import './card-list.style.scss';
+import { Container } from './card-list.styled';
 
 const CardList = ({ searchField, list }) => (
-  <div className="cardList">
+  <Container>
     {list.filter(
       (elem) => elem.name.toUpperCase().includes(searchField.toUpperCase()),
     )
@@ -14,7 +14,7 @@ const CardList = ({ searchField, list }) => (
           <Card pokemon={card} />
         </div>
       ))}
-  </div>
+  </Container>
 );
 
 const mapStateToProps = (state) => ({
