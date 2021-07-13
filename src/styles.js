@@ -9,9 +9,9 @@ import { colors } from './colors';
 // }
 
 export const Container = styled.div`
-  background: linear-gradient(${colors.purple}, ${colors.secondary});
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  overflow-x: hidden;
+  background: linear-gradient(${colors.purple}, ${colors.secondary});
+  min-height: 100vh;
 `;

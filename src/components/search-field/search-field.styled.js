@@ -10,5 +10,8 @@ export const Input = styled.input`
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.3rem;
     text-align: center;
-
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #fffffff0;
 `;
